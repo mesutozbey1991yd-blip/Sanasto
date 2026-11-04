@@ -1,34 +1,8 @@
 import type { Word } from '@/lib/vocabulary';
 import type { SpeechLanguage } from '@/lib/speech';
-import { ALL_LEARNING_STATUSES, matchesSelectionFilters, type WordSelectionFilters } from '@/lib/wordFilters';
-import { sortWordsByListMode, WORD_LIST_SORT_OPTIONS, type WordListSort } from '@/lib/wordSort';
+import { matchesSelectionFilters } from '@/lib/wordFilters';
 import { orderWords } from '@/lib/wordSort';
-import { shuffle } from '@/lib/random';
 import type { GameSetupConfig } from '@/lib/games/gameConfig';
-
-export type ListeningSort = WordListSort | 'random';
-
-export interface ListeningSource extends WordSelectionFilters {
-  sort: ListeningSort;
-}
-
-export const LISTENING_SORT_OPTIONS: { value: ListeningSort; label: string }[] = [
-  ...WORD_LIST_SORT_OPTIONS,
-  { value: 'random', label: 'Karışık' },
-];
-
-export const DEFAULT_LISTENING_SOURCE: ListeningSource = {
-  categoryIds: [],
-  levels: 'all',
-  learningStatuses: ALL_LEARNING_STATUSES,
-  favoritesOnly: false,
-  sort: 'added',
-};
-
-export function selectListeningWords(words: Word[], source: ListeningSource): Word[] {
-  const filtered = words.filter((word) => matchesSelectionFilters(word, source));
-  return source.sort === 'random' ? shuffle(filtered) : sortWordsByListMode(filtered, source.sort);
-}
 
 export function selectListeningWordsFromConfig(words: Word[], config: GameSetupConfig): Word[] {
   const filtered = words.filter((word) => matchesSelectionFilters(word, config));
