@@ -231,13 +231,13 @@ export default function GamesPage() {
             </li>
           </ul>
 
-          <div className="flex justify-end">
+          <div className="flex justify-center">
             <button
               type="button"
               onClick={() => setTab('settings')}
               className="inline-flex items-center gap-2 rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
             >
-              Kelime kategorileri seç
+              Kelime ve Kategori Seç
             </button>
           </div>
         </div>
