@@ -237,7 +237,7 @@ export default function GamesPage() {
               onClick={() => setTab('settings')}
               className="inline-flex items-center gap-2 rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
             >
-              Kelime ve Kategori Seç
+              Kelime Kategorisi Seç ve Filtrele
             </button>
           </div>
         </div>
